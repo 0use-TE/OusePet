@@ -1,0 +1,13 @@
+{
+  ".url": {
+    "ousepet.Application": {
+      "title": "有宠相簿",
+      "icon": "images/icon_{0}.png",
+      "type": "url",
+      "protocol": "http",
+      "port": "8766",
+      "url": "/",
+      "allUsers": false
+    }
+  }
+}

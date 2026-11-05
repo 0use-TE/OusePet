@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="有宠相簿 OusePet：运行在自己的 NAS 上，整理猫咪与刺猬的照片和视频，建立宠物档案，把喜欢的日常收进回忆。">
+  <meta name="theme-color" content="#f7f5f0">
+  <meta property="og:title" content="有宠相簿 · 把它们的日常，留成回忆。">
+  <meta property="og:description" content="为猫咪和刺猬准备的自托管相簿。照片、视频、宠物档案与回忆分享。">
+  <meta property="og:type" content="website">
+  <title>有宠相簿 OusePet · 把它们的日常，留成回忆。</title>
+  <link rel="icon" type="image/webp" href="assets/logo.webp">
+  <link rel="stylesheet" href="styles.css">
+  <script src="app.js" defer></script>
+</head>
+<body>
+  <a class="skip-link" href="#main">跳到正文</a>
+  <header class="navigation wrap">
+    <a class="brand" href="#" aria-label="有宠相簿首页"><img src="assets/logo.webp" width="40" height="40" alt=""><span>有宠相簿<small>OusePet</small></span></a>
+    <nav aria-label="主导航"><a href="#features">功能</a><a href="#preview">界面</a><a href="#start">部署</a><a class="github-link" href="https://github.com/0use-TE/OusePet" target="_blank" rel="noopener noreferrer">GitHub <span aria-hidden="true">↗</span></a></nav>
+  </header>
+  <main id="main">
+    <section class="hero wrap">
+      <div class="eyebrow"><span class="status-dot"></span>给猫咪，也给小刺猬 <span class="eyebrow-divider">/</span> SELF-HOSTED PET ALBUM</div>
+      <h1>把它们的日常，<br><span>留成回忆。</span><svg class="hero-spark" width="58" height="58" viewBox="0 0 58 58" fill="none" aria-hidden="true"><path d="M29 3c0 18-8 26-26 26 18 0 26 8 26 26 0-18 8-26 26-26C37 29 29 21 29 3Z" stroke="currentColor" stroke-width="2"/></svg></h1>
+      <p class="hero-intro">满手机的猫猫，偶尔出镜的小刺猬。<br>让照片和视频回到一起，在自己的 NAS 里，慢慢收藏它们的每一天。</p>
+      <div class="hero-actions"><a class="button primary" href="#start">部署自己的相簿 <span aria-hidden="true">↗</span></a><a class="button secondary" href="#preview">看看实际界面 <span aria-hidden="true">↓</span></a></div>
+      <div class="hero-tags"><span>本地识别</span><span>照片 + 视频</span><span>Docker 部署</span><span>源码开放</span></div>
+      <div class="app-window"><div class="window-bar"><div class="window-dots"><i></i><i></i><i></i></div><span>属于它们的小小世界</span><span class="window-local">LOCAL LIBRARY</span></div><button class="screenshot-button" data-image="assets/pets.webp" data-caption="宠物档案 · 按自己的习惯排列每一位小伙伴" aria-label="放大查看宠物档案界面"><img class="hero-screenshot" src="assets/pets.webp" width="1440" height="750" alt="有宠相簿实际界面：基米、扣嘚等宠物拥有独立档案、照片计数和编辑入口" fetchpriority="high"></button></div>
+      <div class="hero-caption"><span>实际软件界面 · 展示截图已脱敏</span><span>每一个小家伙，都值得一个专属位置。↗</span></div>
+    </section>
+    <section id="features" class="features wrap section-space">
+      <div class="section-heading"><div><p class="kicker">MADE FOR THEIR EVERYDAY</p><h2>从一张照片，<br>到一整个小世界。</h2></div><p>不用把回忆散落在不同的文件夹。<br>一起浏览、整理，再分享给在意它们的人。</p></div>
+      <div class="feature-grid">
+        <article class="feature-card lavender"><span class="feature-number">01 / DISCOVER</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="m10 17-2-9 10 5h4l10-5-2 9c6 20-26 20-20 0Z"/><path d="M15 22h.1M25 22h.1m-7 5 2 1 2-1"/></svg><h3>先发现，再认识</h3><p>本地识别猫咪和刺猬。相似宠物出现在至少 5 项不同媒体中，生成未命名档案，再由你命名与整理。</p><span class="feature-foot">自动分组 · 自定义种类</span></article>
+        <article class="feature-card peach"><span class="feature-number">02 / COLLECT</span><svg viewBox="0 0 40 40" aria-hidden="true"><rect x="7" y="8" width="26" height="25" rx="5"/><path d="m8 27 9-9 6 6 4-4 6 6M25 15h.1"/></svg><h3>照片视频，一起看</h3><p>时间线浏览与日期跳转，把照片和视频放在同一个图库。文件夹新增内容自动增量处理，无需反复导入。</p><span class="feature-foot">时间线 · 增量扫描 · 视频采样识别</span></article>
+        <article class="feature-card sage"><span class="feature-number">03 / REMEMBER</span><svg viewBox="0 0 40 40" aria-hidden="true"><path d="M20 32S6 24 6 15c0-8 11-11 14-3 3-8 14-5 14 3 0 9-14 17-14 17Z"/></svg><h3>把喜欢的，收进回忆</h3><p>为小时候、出门玩或特别的一天建立回忆。挑选封面、合并内容，用带有效期或提取码的链接分享。</p><span class="feature-foot">自定义封面 · 外链管理</span></article>
+      </div>
+    </section>
+    <section id="preview" class="preview-section section-space">
+      <div class="wrap"><div class="section-heading"><div><p class="kicker">A LITTLE LOOK INSIDE</p><h2>看得见的日常。<br>用得顺手的相簿。</h2></div><p>深色界面，让目光留在照片上。<br>电脑、平板和手机都能打开浏览。</p></div>
+        <div class="preview-tabs" role="tablist" aria-label="选择软件截图"><button role="tab" id="tab-library" aria-selected="true" aria-controls="preview-panel" data-preview="library">01 宠物图库</button><button role="tab" id="tab-pets" aria-selected="false" aria-controls="preview-panel" tabindex="-1" data-preview="pets">02 宠物档案</button><button role="tab" id="tab-sharing" aria-selected="false" aria-controls="preview-panel" tabindex="-1" data-preview="sharing">03 回忆分享</button></div>
+        <div id="preview-panel" role="tabpanel" aria-labelledby="tab-library"><button id="preview-open" class="screenshot-button preview-frame" data-image="assets/library.webp" data-caption="宠物图库 · 沿着时间线，重看每一个普通又珍贵的日常" aria-label="放大查看当前软件截图"><img id="preview-image" src="assets/library.webp" width="1440" height="960" alt="宠物图库实际界面：按拍摄日期排列刺猬照片，支持物种筛选和右侧时间线" loading="lazy"></button><p id="preview-caption" class="preview-caption">宠物图库 · 沿着时间线，重看每一个普通又珍贵的日常</p></div>
+      </div>
+    </section>
+    <section class="local-section wrap section-space"><div class="local-mark" aria-hidden="true"><svg viewBox="0 0 90 90"><rect x="16" y="17" width="58" height="57" rx="14"/><path d="M17 46h56M29 32h17m-17 29h17"/><circle cx="61" cy="32" r="2"/><circle cx="61" cy="61" r="2"/></svg></div><div><p class="kicker">YOUR NAS. YOUR MEMORIES.</p><h2>住在你自己的 NAS 里。</h2><p>识别在本地运行，索引保存在本地数据库，照片目录以只读方式挂载。<br>手动更正可以保留，分享链接也能随时关闭或删除。</p><div class="local-chips"><span>原文件只读</span><span>本地 AI</span><span>CPU / NVIDIA GPU</span></div></div></section>
+    <section id="start" class="start-section wrap section-space"><div class="section-heading"><div><p class="kicker">MAKE ROOM FOR MEMORIES</p><h2>给它们，安个家。</h2></div><p>适合喜欢自己动手的 NAS 玩家。<br>从源码开始，把相簿放进自己的设备。</p></div><div class="start-grid"><div class="start-copy"><h3>从 GitHub 获取源码</h3><p>Python + FastAPI、React + TypeScript，使用 Docker Compose 部署。支持 CPU 推理与 NVIDIA GPU 加速。</p><p class="model-note">当前为持续开发版本。模型权重和运行数据不随仓库分发，首次部署需按文档准备模型及 DINOv2 缓存。</p><a class="text-link" href="https://github.com/0use-TE/OusePet/blob/main/docs/deployment.md" target="_blank" rel="noopener noreferrer">阅读完整部署说明 ↗</a></div><div class="terminal"><div class="terminal-heading"><span>获取项目</span><button id="copy-clone" aria-label="复制克隆命令">复制命令</button></div><pre><code><span class="code-comment"># 01  获取源码</span>
+git clone https://github.com/0use-TE/OusePet.git
+cd OusePet
+
+<span class="code-comment"># 02  构建前端</span>
+npm --prefix frontend ci
+npm --prefix frontend run build
+
+<span class="code-comment"># 03  按部署文档准备模型与存储</span>
+<span class="code-comment">#     然后启动 Docker Compose</span></code></pre><p id="copy-status" role="status" aria-live="polite"></p></div></div></section>
+    <section class="faq wrap section-space"><p class="kicker">A FEW THINGS TO KNOW</p><h2>开始之前的小问题。</h2><details><summary>识别结果需要我手动整理吗？</summary><p>需要少量整理。自动分组是基于视觉相似度的建议，不是身份认证；相近外观可能误分，同一宠物也可能分为多个档案。可以批量合并、更正种类或增删归属，手动纠正会被保留。</p></details><details><summary>视频是怎样识别的？</summary><p>按视频时长间隔采样，并在识别到宠物的片段附近加密采样。它不是逐帧识别，可能漏掉短暂出现的宠物；支持精细重扫与手动添加。视频仍按一项内容计数。</p></details><details><summary>分享链接能让别人看到整个图库吗？</summary><p>访客只能访问链接对应回忆里的内容。分享服务使用独立端口，可设置有效期、提取码和原文件下载权限；回忆移出的内容和删除的链接随即失效。公网访问需要自行配置反代与 HTTPS。</p></details><details><summary>这个网站就是相簿应用吗？</summary><p>这里是项目的静态介绍页，界面图来自实际运行的软件。完整相簿与识别服务需要部署在自己的电脑或 NAS 上，GitHub Pages 不运行 Python 后端。</p></details></section>
+    <section class="closing wrap"><span class="closing-dot" aria-hidden="true">✳</span><h2>普通的一天，<br>也是值得留下的一天。</h2><a class="button primary" href="https://github.com/0use-TE/OusePet" target="_blank" rel="noopener noreferrer">去 GitHub 看看 <span aria-hidden="true">↗</span></a></section>
+  </main>
+  <footer class="wrap"><a class="brand" href="#"><img src="assets/logo.webp" width="30" height="30" alt=""><span>有宠相簿</span></a><span>为小伙伴们做一个相簿。<span class="footer-year">© 2026 Ouse</span></span><a href="https://github.com/0use-TE/OusePet/blob/main/LICENSE">MIT · 查看源码许可 ↗</a></footer>
+  <dialog id="image-viewer" aria-label="软件界面大图"><button id="close-viewer" aria-label="关闭大图">关闭 ×</button><img id="viewer-image" alt=""><p id="viewer-caption"></p></dialog>
+</body>
+</html>

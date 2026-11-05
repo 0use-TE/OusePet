@@ -1,0 +1,36 @@
+name: ousepet
+services:
+  album:
+    image: ousepet-album:0.1.0-cu124
+    build:
+      context: .
+      dockerfile: Dockerfile.album
+      network: host
+      args:
+        HTTP_PROXY: ${BUILD_HTTP_PROXY:-}
+        HTTPS_PROXY: ${BUILD_HTTPS_PROXY:-}
+    container_name: ousepet-album
+    restart: unless-stopped
+    ports:
+      - '8766:8766'
+      - '8767:8767'
+    environment:
+      TZ: Asia/Seoul
+      OUSEPET_DATA: /data
+      OUSEPET_LIBRARY_ROOTS: /photos:/test-photos
+      OUSEPET_DEVICE: ${OUSEPET_DEVICE:-auto}
+      OUSEPET_CPU_THREADS: '4'
+      OUSEPET_WATCH_INTERVAL: '60'
+    volumes:
+      - ./data:/data
+      - ./models:/app/models:ro
+      - ${OUSEPET_PHOTOS:-/vol1/1000/Photos}:/photos:ro
+      - ./test-photos:/test-photos:ro
+    mem_limit: 4g
+    cpus: 4
+    stop_grace_period: 40s
+    logging:
+      driver: json-file
+      options:
+        max-size: '10m'
+        max-file: '3'

@@ -1,0 +1,4 @@
+services:
+  album:
+    devices:
+      - nvidia.com/gpu=all

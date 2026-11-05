@@ -1,0 +1,22 @@
+FROM python:3.11-slim-bookworm
+ENV PYTHONUNBUFFERED=1 PIP_DISABLE_PIP_VERSION_CHECK=1 \
+    MPLCONFIGDIR=/tmp/matplotlib YOLO_CONFIG_DIR=/tmp/ultralytics \
+    OUSEPET_DATA=/data OUSEPET_LIBRARY_ROOTS=/photos:/test-photos \
+    OUSEPET_DEVICE=auto
+ARG HTTP_PROXY
+ARG HTTPS_PROXY
+RUN http_proxy=$HTTP_PROXY https_proxy=$HTTPS_PROXY apt-get update && http_proxy=$HTTP_PROXY https_proxy=$HTTPS_PROXY apt-get install -y --no-install-recommends libgl1 libglib2.0-0 && rm -rf /var/lib/apt/lists/*
+# CUDA 12.4 wheels retain support for the NAS's Maxwell GPU.
+RUN pip install --no-cache-dir torch==2.6.0 torchvision==0.21.0 --index-url https://download.pytorch.org/whl/cu124
+COPY requirements-album.txt /tmp/requirements-album.txt
+RUN pip install --no-cache-dir -r /tmp/requirements-album.txt
+RUN http_proxy=$HTTP_PROXY https_proxy=$HTTPS_PROXY apt-get update && http_proxy=$HTTP_PROXY https_proxy=$HTTPS_PROXY apt-get install -y --no-install-recommends ffmpeg && rm -rf /var/lib/apt/lists/*
+WORKDIR /app
+COPY ousepet /app/ousepet
+COPY frontend/dist /app/frontend/dist
+COPY assets/branding/logo-rounded-v2.png /app/assets/branding/logo-rounded-v2.png
+COPY .cache/dinov2 /app/.cache/dinov2
+COPY scripts/benchmark_nas.py /app/scripts/benchmark_nas.py
+EXPOSE 8766 8767
+HEALTHCHECK --interval=30s --timeout=5s --start-period=30s CMD python -c "import urllib.request; urllib.request.urlopen('http://127.0.0.1:8766/api/health',timeout=4)"
+CMD ["python", "-m", "ousepet.server"]

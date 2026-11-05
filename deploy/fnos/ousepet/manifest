@@ -1,0 +1,13 @@
+appname=ousepet
+version=0.1.2
+display_name=有宠相簿
+desc=猫咪与刺猬的本地相册
+platform=x86
+source=thirdparty
+maintainer=Ouse
+distributor=Ouse
+desktop_uidir=ui
+desktop_applaunchname=ousepet.Application
+service_port=8766
+checkport=false
+ctl_stop=true
