@@ -24,7 +24,7 @@ with httpx.Client(base_url='http://192.168.1.80:8766', trust_env=False, timeout=
             route.fulfill(status=response.status_code, body=response.content,
                           content_type=response.headers.get('content-type', 'application/octet-stream'))
         page.route('**/api/**', proxy)
-    page.goto(args.base)
+    page.goto(args.base+'/?view=all')
     page.wait_for_selector('.photo-tile')
     expect(page.locator('h1')).to_have_text('图库')
     workspace=page.locator('.workspace')
@@ -38,7 +38,7 @@ with httpx.Client(base_url='http://192.168.1.80:8766', trust_env=False, timeout=
     page.screenshot(path=str(out/'gallery-inner-scroll.png'))
     workspace.evaluate('(element) => element.scrollTop = 0')
     checks.append('gallery owns vertical scroll; page and wide search stay fixed')
-    assert page.locator('.sidebar .nav-item').count() == 6
+    assert page.locator('.sidebar .nav-item').count() == 7
     assert page.locator('.sidebar-note').count() == 0
     assert page.get_by_role('button', name='图库显示设置', exact=True).count() == 0
     assert page.locator('.topbar').get_by_role('button', name='添加存储', exact=True).count() == 0
@@ -52,7 +52,7 @@ with httpx.Client(base_url='http://192.168.1.80:8766', trust_env=False, timeout=
     expect(page.locator('h1')).to_have_text('猫咪')
     page.go_back()
     expect(page.locator('h1')).to_have_text('宠物图库')
-    checks.append('six sidebar items; no review/duplicate species/settings/add entry; route reload and back')
+    checks.append('seven sidebar items including external links; no review/duplicate species/settings/add entry; route reload and back')
     page.get_by_role('button', name='设置', exact=True).click()
     page.get_by_role('button', name='显示设置', exact=True).click()
     picker = page.get_by_role('button', name='拍摄时间排序', exact=True)

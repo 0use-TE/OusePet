@@ -67,10 +67,10 @@ const labels: Record<string, string> = {
 };
 function readRoute() {
   const params = new URLSearchParams(window.location.search);
-  const requestedView = params.get("view") || "all";
+  const requestedView = params.get("view") || (params.has("media") ? "all" : "gallery");
   const view = requestedView === "review" ? "gallery" : requestedView === "videos" ? "all" : requestedView;
   return {
-    view: Object.hasOwn(labels, view) ? view : "all",
+    view: Object.hasOwn(labels, view) ? view : "gallery",
     pet: params.get("pet") || "",
     album: params.get("album") || "",
     media: requestedView === "videos" ? "video" : ["image", "video"].includes(params.get("media") || "") ? params.get("media")! : "all",
@@ -424,7 +424,7 @@ function App() {
     setSelectedPets([]);
     const url = new URL(window.location.href);
     url.searchParams.delete("media"); setMedia("all");
-    for (const [key, value] of [["view", target === "all" ? "" : target], ["pet", p], ["album", a]]) {
+    for (const [key, value] of [["view", target === "gallery" ? "" : target], ["pet", p], ["album", a]]) {
       if (value) url.searchParams.set(key, value);
       else url.searchParams.delete(key);
     }
@@ -782,7 +782,7 @@ function App() {
             {view === "shares" && <button className="button subtle" onClick={() => { setSettingsTab("sharing"); setModal("settings"); }}><SettingsIcon size={16} />分享设置</button>}
             {view === "all" && !petId && !albumId && <div className="filter-tabs" role="group" aria-label="媒体类型筛选">
               {[["all", "全部"], ["image", "照片"], ["video", "视频"]].map(([value, label]) => <button key={value} className={media === value ? "chosen" : ""} aria-pressed={media === value} onClick={() => {
-                setMedia(value); const url = new URL(window.location.href); url.searchParams.delete("view");
+                setMedia(value); const url = new URL(window.location.href); url.searchParams.set("view", "all");
                 if (value === "all") url.searchParams.delete("media"); else url.searchParams.set("media", value);
                 if (url.href !== window.location.href) window.history.pushState(null, "", url);
               }}>{label}</button>)}
